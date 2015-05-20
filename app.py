@@ -23,9 +23,7 @@ def request_handler():
 	email = request.form['youremail']
 	g.db = connect_db()
 	params = (str(name), str(email))
-	print (params)
 	g.db.execute("INSERT INTO registrations VALUES (?, ?)", params)
-	print ("Inserted")
 	g.db.close()
 	return render_template('index.html')
 
@@ -40,7 +38,7 @@ def unsubscribe_handler():
 	g.db = connect_db()
 	cur = g.db.execute('SELECT * FROM registrations')
 	posts = [dict(name=row[0], email=row[1]) for row in cur.fetchall()]
-	print (posts)
+	g.db.close()
 	return render_template('index.html')
 
 
