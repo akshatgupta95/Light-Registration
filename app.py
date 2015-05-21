@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, g
 import sqlite3 as sl
 import os
+from twilio.rest import TwilioRestClient
 
 app = Flask(__name__)
 
@@ -68,10 +69,19 @@ def text_handler():
 	num = [dict(phone=row[0]) for row in cur.fetchall()][0]['phone']
 	num = str(num)
 	data = {'name' : name, 'phone' : num}
+	send_msg(num, mesg)
 	c.close()
 	return render_template('text_output.html', data=data)
 
-
+def send_msg(num, mesg):
+	account_sid = "ACe85795fdf3a490fab8dfcf69bdf4d973"
+	auth_token  = "47ff734df2b4c1d97f6a6640f8fd2ea5"
+	client = TwilioRestClient(account_sid, auth_token)
+	 
+	message = client.messages.create(body=mesg,
+	    to="+%s" % str(num),    # Replace with your phone number
+	    from_="+19073121192") # Replace with your Twilio number
+	return None
 
 def connect_db():
 	return sl.connect(app.database)
