@@ -46,6 +46,9 @@
                 <li>
                     <a href="\unsubscribe">Unsubscribe</a>
                 </li>
+                <li>
+                    <a href="\text">Text-a-Person</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -60,6 +63,7 @@
                       {% for reg in regs %}
                         <strong>Name: </strong>{{ reg.name }} <br>
                         <strong>Email: </strong>{{ reg.email }} <br>
+                        <strong>Phone: </strong>{{ reg.phone }} <br>
                       <br>
                       {% endfor %}
                     </div>

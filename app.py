@@ -21,12 +21,13 @@ def subscribe():
 def request_handler():
 	name = request.form['yourname']
 	email = request.form['youremail']
+	num = request.form['yournum']
 	g.db = connect_db()
-	params = (str(name), str(email))
+	params = (str(name), str(email), str(num))
 	curr = g.db.cursor()
-	curr.execute("INSERT INTO registrations VALUES (?, ?)", params)
+	curr.execute("INSERT INTO registrations VALUES (?, ?, ?)", params)
 	cur = g.db.execute('SELECT * FROM registrations')
-	regs = [dict(name=row[0], email=row[1]) for row in cur.fetchall()]
+	regs = [dict(name=row[0], email=row[1], phone=row[2]) for row in cur.fetchall()]
 	g.db.commit()
 	curr.close()
 	return render_template('index.html', regs=regs)
@@ -39,13 +40,14 @@ def unsubscribe():
 def unsubscribe_handler():
 	name = request.form['yourname']
 	email = request.form['youremail']
-	params = (str(name), str(email))
+	num = request.form['yournum']
+	params = (str(name), str(email), str(num))
 	g.db = connect_db()
 	c = g.db.cursor()
-	c.execute("DELETE FROM registrations WHERE name=? AND email=?", params)
+	c.execute("DELETE FROM registrations WHERE name=? AND email=? AND phone=?", params)
 	g.db.commit()
 	cur = g.db.execute('SELECT * FROM registrations')
-	regs = [dict(name=row[0], email=row[1]) for row in cur.fetchall()]
+	regs = [dict(name=row[0], email=row[1], phone=row[2]) for row in cur.fetchall()]
 	c.close()
 	return render_template('index.html', regs=regs)
 
