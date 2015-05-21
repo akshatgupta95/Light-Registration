@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Subscribe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <h3>A text message has been sent to {{ data['name'] }} at {{ data['phone'] }} <br>
+                    </h3><br><br>
+    <form action="/subscribe">
+      <input type="submit" value="Subscribe more">
+    </form>
+        <form action="/unsubscribe">
+      <input type="submit" value="Unsubscribe more">
+    </form>
+        <form action="/text">
+      <input type="submit" value="Text more">
+    </form>
+  </body>
+</html>

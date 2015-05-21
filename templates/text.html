@@ -6,19 +6,16 @@
   </head>
   <body>
     <div class="container">
-      <h1>Registration Page</h1>
+      <h1>Contact</h1>
       <br>
-      <form method="post" action="/request_handler">
+      <form method="post" action="/text_handler">
         <label for="yourname">Name:</label>
         <input type="text" name="yourname", value="{{ request.form.yourname }}" /><br />
-        
-        <label for="youremail">Email:</label>
-        <input type="text" name="youremail", value="{{ request.form.youremail }}" /><br />
 
-        <label for="youremail">Phone:</label>
-        <input type="text" name="yournum", value="{{ request.form.yournum }}" /><br />
+        <label for="msg">Message:</label>
+        <input type="text" name="msg", value="{{ request.form.msg }}" /><br />
         
-        <input class="btn btn-default" type="submit" value="Subscribe">
+        <input class="btn btn-default" type="submit" value="Text">
       </form>
     </div>
   </body>

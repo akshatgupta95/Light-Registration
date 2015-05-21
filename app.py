@@ -52,6 +52,26 @@ def unsubscribe_handler():
 	return render_template('index.html', regs=regs)
 
 
+@app.route('/text')
+def text():
+	return render_template('text.html')
+
+
+@app.route('/text_handler', methods=['GET', 'POST'])
+def text_handler():
+	name = request.form['yourname']
+	mesg = request.form['msg']
+	params = (str(name),)
+	g.db = connect_db()
+	c = g.db.cursor()
+	cur = c.execute("SELECT phone FROM registrations WHERE name=?", params)
+	num = [dict(phone=row[0]) for row in cur.fetchall()][0]['phone']
+	num = str(num)
+	data = {'name' : name, 'phone' : num}
+	c.close()
+	return render_template('text_output.html', data=data)
+
+
 
 def connect_db():
 	return sl.connect(app.database)
