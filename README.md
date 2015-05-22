@@ -7,7 +7,7 @@ Send texts to Twilio verifed numbers.
 
 You may download the latest working release (Light Registration with Texting).
 
-Before running this app, replace the following lines with your own Twilio details.
+Before running this app, replace the following lines in ```app.py``` with your own Twilio details.
 ```
 account_sid = ""	# insert your account_sid
 auth_token  = ""	# your own auth_token
