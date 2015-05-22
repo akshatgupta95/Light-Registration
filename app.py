@@ -74,13 +74,13 @@ def text_handler():
 	return render_template('text_output.html', data=data)
 
 def send_msg(num, mesg):
-	account_sid = "ACe85795fdf3a490fab8dfcf69bdf4d973"
-	auth_token  = "47ff734df2b4c1d97f6a6640f8fd2ea5"
+	account_sid = ""	# insert your account_sid
+	auth_token  = ""	# your own auth_token
 	client = TwilioRestClient(account_sid, auth_token)
 	 
 	message = client.messages.create(body=mesg,
-	    to="+%s" % str(num),    # Replace with your phone number
-	    from_="+19073121192") # Replace with your Twilio number
+	    to="+%s" % str(num),    
+	    from_="+") # Replace with your Twilio number
 	return None
 
 def connect_db():
