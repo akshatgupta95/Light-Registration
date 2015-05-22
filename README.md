@@ -6,6 +6,7 @@ The subscriptions are stored/queried using sqlite3.
 Send texts to Twilio verifed numbers.
 
 You may download the latest working release (Light Registration with Texting).
+
 Before running this app, replace the following lines with your own Twilio details.
 ```
 account_sid = ""	# insert your account_sid
